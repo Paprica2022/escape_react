@@ -3,7 +3,7 @@ import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import io from "socket.io-client";
 import { Grid } from "@mui/material";
 
-// import GameContainer from "container/game/GameContainer";
+import GameContainer from "../container/game/GameContainer";
 import RoomContainer from "../container/room/RoomContainer";
 
 import { API_URL } from "../_variables.js";
@@ -56,10 +56,10 @@ function Router() {
                     path="/*"
                     element={<RoomContainer socket={socket} room_list={room_list} />}
                 />
-                {/* <Route
+                <Route
                     path="/game/*"
                     element={<GameContainer socket={socket} {...info} />}
-                /> */}
+                />
             </Routes>
         </Grid>
     );
