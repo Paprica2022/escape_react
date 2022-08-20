@@ -1,4 +1,5 @@
 import React from "react";
+import { Button } from '@mui/material';
 
 import RoomInfo from "./RoomInfo";
 
@@ -16,11 +17,11 @@ const GameContainer = ({ socket, room_info }) => {
     room_status: "waiting"
     */
 
-    // const joinAI = () => socket.emit("join_ai");
+    const exitRoom = () => socket.emit("exit_room");
 
     return (
         <div>
-            hello world
+            <Button variant="contained" onClick={exitRoom}>되돌아가기</Button>
             {/* <RoomInfo socket={socket} {...room_info}/> */}
         </div>
     );
