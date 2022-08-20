@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { Route, Routes, useNavigate, useLocation, Link } from "react-router-dom";
 import io from "socket.io-client";
-import { Grid } from "@mui/material";
+import { Button, Grid, LinearProgress } from "@mui/material";
 
 import GameContainer from "../container/game/GameContainer";
 import RoomContainer from "../container/room/RoomContainer";
-
+import RoomMain from "../container/game/RoomMain";
 import { API_URL } from "../_variables.js";
 
 console.log(API_URL);
@@ -43,6 +43,10 @@ function Router() {
               setInfo({ room_info: info.room_info, game_info: info.game_info });
               navigate(`/game/${info.room_info.room_id}`);
               break;
+            case "game_info":
+              // setInfo({ room_info: info.room_info, game_info: info.game_info });
+              // navigate(`/game/${info.room_info.room_id}`);
+              break;
             default:
               console.log("command not found", info.command);
           }
@@ -59,6 +63,10 @@ function Router() {
                 <Route
                     path="/game/*"
                     element={<GameContainer socket={socket} {...info} />}
+                />
+                <Route
+                    path="/game/start"
+                    element={<RoomMain />}
                 />
             </Routes>
         </Grid>

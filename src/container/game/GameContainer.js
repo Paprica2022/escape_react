@@ -1,10 +1,11 @@
 import React from "react";
-import { Button } from '@mui/material';
+import { Button, Link } from '@mui/material';
 
 import RoomInfo from "./RoomInfo";
-
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import RoomMain from "./RoomMain";
 const GameContainer = ({ socket, room_info }) => {
-
+    const navigate = useNavigate();
     /*
     room_info:
     map: "hello"
@@ -18,11 +19,15 @@ const GameContainer = ({ socket, room_info }) => {
     */
 
     const exitRoom = () => socket.emit("exit_room");
+    const startroom = () => {
+        navigate("/game/start");
+    };
 
     return (
         <div>
             <Button variant="contained" onClick={exitRoom}>되돌아가기</Button>
-            {/* <RoomInfo socket={socket} {...room_info}/> */}
+            <Button variant="contained" onClick={startroom}>시작하기</Button>
+
         </div>
     );
 
