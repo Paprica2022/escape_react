@@ -11,20 +11,20 @@ import { Socket } from "socket.io-client";
 
 const GameInfo = ({ socket, game_info }) => {
     
-    const renderPlayers = () => {
-        var player = game_info.player;
-        // var location = game_info.location;
-        var location = [['translate('+650+'px, '+540+'px)']];
-        // return (tbody(
-        //     for (let i = 0; i < numrows; i++) {
-        //         ObjectRow()
-        //     } 
-        // ))
+    // const renderPlayers = () => {
+    //     var player = game_info.player;
+    //     // var location = game_info.location;
+    //     var location = [['translate('+650+'px, '+540+'px)']];
+    //     // return (tbody(
+    //     //     for (let i = 0; i < numrows; i++) {
+    //     //         ObjectRow()
+    //     //     } 
+    //     // ))
         
         
-        console.log(player);
-        console.log(location);
-    }
+    //     console.log(player);
+    //     console.log(location);
+    // }
 
     // const playerList = player.map(function(player, i) => (<img className="my_paprica" style= {transform : 'translate('+location[i][0]+'px, '+location[i][1]+'px)'} alt="y_paprica_img" src={`${process.env.PUBLIC_URL}/asset/Yellow Paprica gif/front-walk.gif`}></img>));
     
@@ -35,24 +35,24 @@ const GameInfo = ({ socket, game_info }) => {
     };
 
     const goRight = () => {
-        setNumber(lrindex+50);
-        console.log("rigth lrindex",lrindex)
+        // setNumber(lrindex+50);
+        // console.log("rigth lrindex",lrindex)
         socket.emit("move",{direction:"right"});
     };
 
     const goUp = () => {
-        setNum(udindex-50);
-        console.log("udindex",udindex)
+        // setNum(udindex-50);
+        // console.log("udindex",udindex)
         socket.emit("move",{direction:"up"});
     };
 
     const goDown = () => {
-        setNum(udindex+50);
-        console.log("dd udindex" ,udindex)
+        // setNum(udindex+50);
+        // console.log("dd udindex" ,udindex)
         socket.emit("move",{direction:"down"});
     };
 
-    var ctrans = 'translate('+lrindex+'px, '+udindex+'px)'
+    var ctrans = `translate(${game_info.location[0]}px, -${game_info.location[1]}px)`
     var css = {
         transform : ctrans
     }
@@ -65,8 +65,8 @@ const GameInfo = ({ socket, game_info }) => {
         <div>
             <RoomMain />
             <div>
-                {/* <img className="my_paprica" style= {css} 
-                alt="y_paprica_img" src={`${process.env.PUBLIC_URL}/asset/Yellow Paprica gif/front-walk.gif`}></img> */}
+                <img className="my_paprica" style= {css} 
+                alt="y_paprica_img" src={`${process.env.PUBLIC_URL}/asset/Yellow Paprica gif/front-walk.gif`}></img>
             </div>
 
             <div className="joystick">
