@@ -7,33 +7,49 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 
 import RoomMain from "./RoomMain";
 import "./RoomMain.scss"
+import { Socket } from "socket.io-client";
 
-const GameInfo = ({ socket, room_id, player, turn}) => {
+const GameInfo = ({ socket, game_info }) => {
+    
+    const renderPlayers = () => {
+        var player = game_info.player;
+        // var location = game_info.location;
+        var location = [['translate('+650+'px, '+540+'px)']];
+        // return (tbody(
+        //     for (let i = 0; i < numrows; i++) {
+        //         ObjectRow()
+        //     } 
+        // ))
+        
+        
+        console.log(player);
+        console.log(location);
+    }
 
-
+    // const playerList = player.map(function(player, i) => (<img className="my_paprica" style= {transform : 'translate('+location[i][0]+'px, '+location[i][1]+'px)'} alt="y_paprica_img" src={`${process.env.PUBLIC_URL}/asset/Yellow Paprica gif/front-walk.gif`}></img>));
+    
     var [lrindex, setNumber] = useState(0)
     var [udindex, setNum] = useState(0)
     const goLeft = () => {
-        setNumber(lrindex-50);
-        console.log("left lrindex", lrindex)
+        socket.emit("move",{direction:"left"});
     };
 
     const goRight = () => {
         setNumber(lrindex+50);
         console.log("rigth lrindex",lrindex)
-
+        socket.emit("move",{direction:"right"});
     };
 
     const goUp = () => {
         setNum(udindex-50);
         console.log("udindex",udindex)
-
+        socket.emit("move",{direction:"up"});
     };
 
     const goDown = () => {
         setNum(udindex+50);
         console.log("dd udindex" ,udindex)
-
+        socket.emit("move",{direction:"down"});
     };
 
     var ctrans = 'translate('+lrindex+'px, '+udindex+'px)'
@@ -49,8 +65,8 @@ const GameInfo = ({ socket, room_id, player, turn}) => {
         <div>
             <RoomMain />
             <div>
-                <img className="my_paprica" style= {css} 
-                alt="y_paprica_img" src={`${process.env.PUBLIC_URL}/asset/Yellow Paprica gif/front-walk.gif`}></img>
+                {/* <img className="my_paprica" style= {css} 
+                alt="y_paprica_img" src={`${process.env.PUBLIC_URL}/asset/Yellow Paprica gif/front-walk.gif`}></img> */}
             </div>
 
             <div className="joystick">
