@@ -1,14 +1,9 @@
-.background_img {
-    width: 1500px;
-    height: 800px;
-    object-fit: cover;
-    position:relative;
 
-  }
-
-.paprica{
+.my_paprica{
     width: 80px;
     height: 90px;
-    transform: translate(500px, -400px)
+    transform: translate(100px, -800px) 
+    // 작아질 수 록 왼쪽 작아질 수 록 위
+    // 650 ,-450 이 전체 중간 ( 기동범위 생각 안한 )
 }
 
