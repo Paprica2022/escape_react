@@ -18,7 +18,7 @@ export default function RoomMain(){
                     height : heightSize,
                     width : widthSize,
                 }}
-                alt="school_img" src={`${process.env.PUBLIC_URL}/asset/background.png`}/>
+                alt="school_img" src={`${process.env.PUBLIC_URL}/asset/fireclass.gif`}/>
 
             </div>
 
