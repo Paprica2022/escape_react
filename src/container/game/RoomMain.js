@@ -7,7 +7,7 @@ import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
 
 import styles from "./RoomMain.scss"
 
-
+// 맵을 띄우는 파일
 
 export default function RoomMain(){
     const widthSize = 1500;
@@ -50,7 +50,8 @@ export default function RoomMain(){
                     height : heightSize,
                     width : widthSize,
                 }}
-                alt="school_img" src={`${process.env.PUBLIC_URL}/asset/background.png`}></img>
+                alt="school_img" src={`${process.env.PUBLIC_URL}/asset/background.png`}/>
+
                 <img className="my_paprica" style= {css} 
                 alt="y_paprica_img" src={`${process.env.PUBLIC_URL}/asset/Yellow Paprica gif/front-walk.gif`}></img>
             </div>

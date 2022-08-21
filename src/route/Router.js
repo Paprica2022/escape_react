@@ -6,6 +6,7 @@ import { Button, Grid, LinearProgress } from "@mui/material";
 import GameContainer from "../container/game/GameContainer";
 import RoomContainer from "../container/room/RoomContainer";
 import RoomMain from "../container/game/RoomMain";
+import GameInfo from "../container/game/GameInfo";
 import { API_URL } from "../_variables.js";
 
 console.log(API_URL);
@@ -25,6 +26,9 @@ function Router() {
     const [info, setInfo] = useState({
         room_info: { room_id: "", room_status: "", player: [] },
     });
+    const [gameinfo, setGameInfo] = useState({
+      game_info : { room_id : "", player :  [], location : []}
+    });
     ///////////////info////////////////
 
     useEffect(() => {
@@ -40,12 +44,12 @@ function Router() {
               navigate("/room");
               break;
             case "room_info":
-              setInfo({ room_info: info.room_info, game_info: info.game_info });
-              navigate(`/game/${info.room_info.room_id}`);
+              setInfo({ room_info: info.room_info });
+              navigate(`/ready/${info.room_info.room_id}`);
               break;
             case "game_info":
-              // setInfo({ room_info: info.room_info, game_info: info.game_info });
-              // navigate(`/game/${info.room_info.room_id}`);
+              setInfo({ game_info: info.game_info });
+              navigate(`/game/${info.game_info.room_id}`);
               break;
             default:
               console.log("command not found", info.command);
@@ -61,12 +65,14 @@ function Router() {
                     element={<RoomContainer socket={socket} room_list={room_list} />}
                 />
                 <Route
-                    path="/game/*"
+                    path="/ready/*"
                     element={<GameContainer socket={socket} {...info} />}
                 />
                 <Route
-                    path="/game/start"
-                    element={<RoomMain />}
+                    path="/game/*"
+                    element={<GameInfo socket={socket} {...info} />}
+                    // path="/game/start"
+                    // element={<RoomMain />}
                 />
             </Routes>
         </Grid>
