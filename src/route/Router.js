@@ -6,6 +6,7 @@ import { Button, Grid, LinearProgress } from "@mui/material";
 import GameContainer from "../container/game/GameContainer";
 import RoomContainer from "../container/room/RoomContainer";
 import RoomMain from "../container/game/RoomMain";
+import GameInfo from "../container/game/GameInfo";
 import { API_URL } from "../_variables.js";
 
 console.log(API_URL);
@@ -68,8 +69,10 @@ function Router() {
                     element={<GameContainer socket={socket} {...info} />}
                 />
                 <Route
-                    path="/game/start"
-                    element={<RoomMain />}
+                    path="/game/*"
+                    element={<GameInfo socket={socket} {...info} />}
+                    // path="/game/start"
+                    // element={<RoomMain />}
                 />
             </Routes>
         </Grid>
